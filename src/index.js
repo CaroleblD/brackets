@@ -16,6 +16,8 @@ module.exports = function check(str, bracketsConfig) {
     }
   });
 
+  if (str.length % 2) return false
+
   for (let i = 0; i < str.length; i++) {
 
     if (sameBrackets.includes(str[i])) {
@@ -29,6 +31,8 @@ module.exports = function check(str, bracketsConfig) {
       if (!stack.length || stack.pop() !== bracketsMap[str[i]]) return false;
     }
   }
+
+  if (stack.length) return false
 
   return true;
 }
